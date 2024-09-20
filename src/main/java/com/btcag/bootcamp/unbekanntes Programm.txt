@@ -1,0 +1,5 @@
+Das Programm nimmt zwei Werte vom Benutzer an.
+Es zeigt am Ende das Produkt beider Werte an.
+Es berechnet das ergebnis, indem es den ersten Wert herunterzählt, bis es bei 0 angekommen ist.
+Nach jedem Herunterzählen der ersten Zahl zählt es die zweite Zahl bis 0 herunter und addiert
+nach jedem Herunterzählen der zweiten Zahl 1 zum Ergebnis, welches ganz am Anfang auf 0 gesetzt wurde.

@@ -17,6 +17,5 @@ public class FibonacciSequence {
             lastFib = temp;
             System.out.print(lastFib + " ");
         }
-
     }
 }

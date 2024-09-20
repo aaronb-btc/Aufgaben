@@ -18,7 +18,7 @@ public class RueckwaertsAusgeben {
         while (myNumber > 0) {
             long modResult = myNumber % 10;
             System.out.print(modResult);
-            myNumber = (myNumber - modResult) / 10;
+            myNumber = myNumber / 10;
         }
     }
 }

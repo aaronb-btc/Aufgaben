@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class AsciiArt {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        // a)
         System.out.print("Größe des Vierecks: ");
         long size = scanner.nextLong();
         String message = "";
@@ -16,6 +18,8 @@ public class AsciiArt {
         while (counter++ < size) {
             System.out.println(message);
         }
+
+        // b)
         System.out.print("\nGröße des Dreiecks: ");
         size = scanner.nextLong();
         counter = 0;

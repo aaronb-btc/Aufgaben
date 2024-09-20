@@ -11,13 +11,9 @@ public class CalculateDividents {
         long divisor = scanner.nextLong();
         System.out.println("Dis zu welcher Zahl?");
         long maxNumber = scanner.nextLong();
-        long divident = 0;
-        while (divident < maxNumber) {
-            while (divident % divisor == 0) {
-                System.out.println(divident);
-                divident++;
-            }
-            divident++;
+        long temp = 0;
+        while (divisor * temp < maxNumber) {
+            System.out.println(divisor * temp++);
         }
     }
 }

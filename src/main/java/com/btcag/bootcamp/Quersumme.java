@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Quersumme {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+
         System.out.println("Bitte Zahl eingeben (Long):");
         long myNumber = scanner.nextLong();
         long result = 0;
@@ -12,8 +14,10 @@ public class Quersumme {
         while (myNumber > 0) {
             modResult = myNumber % 10;
             result += modResult;
-            myNumber = (myNumber - modResult) / 10;
+            myNumber = myNumber / 10;
         }
+
+
         System.out.println("Die Quersumme ist: " + result);
         System.out.println("Bitte Zahl eingebem (String):");
         String myString = scanner.next();
