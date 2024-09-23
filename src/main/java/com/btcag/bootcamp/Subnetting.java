@@ -15,8 +15,8 @@ public class Subnetting {
         long ip = scanner.nextLong();
         System.out.println("Bitte gebe die Subnetzmaske an");
         long mask = scanner.nextLong();
-        long broadcast = ip | ~(-1 << (32 - 29));
-        ip -= ip & ~(-1 << (32 - 29));
+        long broadcast = ip | ~(-1L << (32 - mask));
+        ip -= ip & ~(-1L << (32 - mask));
         System.out.println("Die Netzadresse ist: " + prefix + ip +
                 "\nDie Broadcastadresse ist: " + prefix + broadcast);
     }
