@@ -1,4 +1,4 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.first;
 
 import java.util.Scanner;
 
@@ -9,8 +9,6 @@ public class Primfaktorzerlegung {
         long inputNumber = scanner.nextLong();
         long result = inputNumber;
         long counter = 2;
-        boolean skip;
-        boolean isPrime;
         System.out.print("Die Zahl " + inputNumber + " kann in folgende Faktoren zerlegt werden: ");
         while (counter <= inputNumber) {
             while (result % counter == 0) {

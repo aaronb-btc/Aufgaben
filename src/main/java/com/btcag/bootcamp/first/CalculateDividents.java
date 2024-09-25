@@ -1,6 +1,4 @@
-package com.btcag.bootcamp;
-
-import jdk.jshell.execution.JdiDefaultExecutionControl;
+package com.btcag.bootcamp.first;
 
 import java.util.Scanner;
 

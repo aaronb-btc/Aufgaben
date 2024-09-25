@@ -1,6 +1,5 @@
-package com.btcag.bootcamp;
+package com.btcag.bootcamp.first;
 
-import java.io.DataInput;
 import java.util.Scanner;
 
 public class SupermarketRegister {
