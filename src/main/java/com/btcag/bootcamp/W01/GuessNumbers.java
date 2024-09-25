@@ -1,4 +1,4 @@
-package com.btcag.bootcamp.first;
+package com.btcag.bootcamp.W01;
 
 import java.util.Random;
 import java.util.Scanner;

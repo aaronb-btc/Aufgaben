@@ -1,4 +1,4 @@
-package com.btcag.bootcamp.first;
+package com.btcag.bootcamp.W01;
 
 public class VARpp_vs_ppVAR {
     public static void main(String[] args) {
