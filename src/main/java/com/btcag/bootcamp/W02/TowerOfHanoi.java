@@ -19,6 +19,7 @@ public class TowerOfHanoi {
         }
 
         while ((arrSum(towerA) + arrSum(towerB)) != 0) {
+            System.out.println(generateDisplay(towers) + "\n");
             if (movesMade % 2 == 0) {
                 for (int i = 0; i < towers.length; i++) {
                     if (findFirst(towers[i]) != -1) {
@@ -36,17 +37,49 @@ public class TowerOfHanoi {
                 }
 
             }
+            movesMade++;
+        }
+        System.out.println(generateDisplay(towers));
+        System.out.println("Game solved in "+  movesMade + " moves.");
+    }
 
-            System.out.println("\nMove " + ++movesMade + ":");
-            for (long[] tower: towers) {
-                System.out.println();
-                for (long ring: tower) {
-                    System.out.println(ring);
+    public static String generateDisplay(long[][] towerArray) {
+        String display = "";
+        String temp;
+        for (int ringIndex = 0; ringIndex < towerArray[0].length; ringIndex ++) {
+            for (int towerIndex = 0; towerIndex < towerArray.length; towerIndex++) {
+                temp = repeatString(" ", (towerArray[0].length + 1) - towerArray[towerIndex][ringIndex]) + repeatString("" + towerArray[towerIndex][ringIndex], towerArray[towerIndex][ringIndex]);
+                display += temp + "#" + reverseString(temp);
+                if (towerArray.length - 1 != towerIndex) {
+                    display += " | ";
                 }
             }
-            System.out.println("---------");
+            display += "\n";
         }
-        System.out.println("Game solved in "+  movesMade + " moves.");
+        temp = repeatString("#", (towerArray[0].length + 1) * 2 + 1);
+        for (int i = 0; i < towerArray.length; i++) {
+            display += temp;
+            if (towerArray.length - 1 != i) {
+                display += " | ";
+            }
+        }
+        return display;
+    }
+
+    public static String reverseString(String str) {
+        String result = "";
+        for (int i = str.length() - 1; i >= 0; i--) {
+            result += str.charAt(i);
+        }
+        return result;
+    }
+
+    public static String repeatString(String str, long n) {
+        String result = "";
+        for (long i = 0; i < n; i++) {
+            result += str;
+        }
+        return result;
     }
 
     public static int posMod(int a, int b) {
