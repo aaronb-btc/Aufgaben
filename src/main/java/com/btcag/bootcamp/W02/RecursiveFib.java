@@ -10,12 +10,11 @@ public class RecursiveFib {
         System.out.println("Fibonacci number no. " + n + ": "+ fibonacci(n - 1));
     }
 
-
     public static int fibonacci(int n) {
         if (n <= 1) {
-            return 1;
+            return 1; // returns 1 in the case of 0 or 1
         } else {
-            return fibonacci(n - 1) + fibonacci(n - 2);
+            return fibonacci(n - 1) + fibonacci(n - 2); // Asks his identical twin if the has the answer to the previous two and adds them together
         }
     }
 }
