@@ -22,7 +22,6 @@ public class SortArray {
             }
 
         }
-
         for (long i: array) {
             System.out.print(i);
         }
