@@ -7,16 +7,18 @@ public class ConnectFour {
         Scanner scanner = new Scanner(System.in);
 
         String[] players = new String[2]; // will store the names of the players
-
-        do {
-            System.out.print("Spieler gelb, bitte gib deinen Namen ein (3 - 15 Zeichen): ");
-            players[0] = scanner.next(); // stores the username in the array
-        } while (players[0].length() < 3 || players[0].length() > 15); // Checks if the entered name is 3 - 15 chars long
-
-        do {
-            System.out.print("Spieler rot, bitte gib deinen Namen ein (3 - 15 Zeichen): ");
-            players[1] = scanner.next();  // stores the username in the array
-        } while (players[1].length() < 3 || players[1].length() > 15); // Checks if the entered name is 3 - 15 chars long
+        String color;
+        for (int i = 0; i < players.length; i++) {
+            if (i == 0) {
+                color = "gelb"; // Player 1 is yellow
+            } else {
+                color = "rot";  // Player 2 is red
+            }
+            do {
+                System.out.print("Spieler " + color + ", bitte gib deinen Namen ein (3 - 15 Zeichen): ");
+                players[i] = scanner.next(); // stores the username in the array
+            } while (players[i].length() < 3 || players[i].length() > 15); // Checks if the entered name is 3 - 15 chars long
+        }
 
         int gameWon = -1; // no one won the game
         int currPlayer = 0; // Player 1 starts the game
@@ -40,11 +42,7 @@ public class ConnectFour {
             } while (!placeInRow(selectedRow, currPlayer, size[0], playfield)); // Runs the move if valid, loops if else
 
             // Set the player to the opposite
-            if (currPlayer == 0) {
-                currPlayer = 1;
-            } else {
-                currPlayer = 0;
-            }
+            currPlayer = (currPlayer + 1) % players.length;
 
             // Check who won it if any and store the player who won (-1 = nobody)
             gameWon = checkPlayerWon(size[0], playfield);
@@ -111,7 +109,7 @@ public class ConnectFour {
                 // Check downwarts to the right
                 counter = 0;
                 for (int j = i; j < gametable.length; j += width + 1) { // goes to tile below and right every iteration
-                    if (gametable[j] == gametable[i] && i % width == j % width + 1) { // if same owner and right line
+                    if (gametable[j] == gametable[i] && i % width <= j % (width + 1)) { // if same owner and right line
                         counter++; // Add 1 to the counted tiles with the same owner in a row
                     } else {
                         j = gametable.length; // exit loop if owner isn't the same
@@ -124,7 +122,7 @@ public class ConnectFour {
                 // Check downwarts to the left
                 counter = 0;
                 for (int j = i; j < gametable.length; j += width - 1) {// goes to tile below and left every iteration
-                    if (gametable[j] == gametable[i] && i % width == j % width - 1) { // if same owner and left line
+                    if (gametable[j] == gametable[i] && i % width >= j % (width - 1)) { // if same owner and left line
                         counter++; // Add 1 to the counted tiles with the same owner in a row
                     } else {
                         j = gametable.length; // exit loop if owner isn't the same
