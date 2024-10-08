@@ -11,11 +11,11 @@ public class QuadraticEquation {
         long b = scanner.nextLong();
         System.out.print("c = ");
         long c = scanner.nextLong();
-        double d = b * b - 4 * a * c; // Random formula i pulled from the internet, works, so im feeling good.
+        double d = b * b - 4 * a * c; // Random formula I pulled from the internet. It works, so im feeling good.
         System.out.print(d);
         // This mf tells you how many (in germany we say) Nullstellen there are
         if (a == 0 && b == 0 && c == 0) {
-            System.out.println("Es gibt unendlich viele verschiedene Lösungen.");
+            System.out.println("Es gibt unendlich viele verschiedene Lösungen."); // There are all if it's on the x axis
         } else if (d > 0) {
             System.out.println("Es gibt zwei Lösungen.");
         } else if (d == 0) {

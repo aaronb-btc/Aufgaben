@@ -54,7 +54,8 @@ public class TowerOfHanoi {
             for (int towerIndex = 0; towerIndex < towerArray.length; towerIndex++) { // and for every tower
                 temp = ("" + towerArray[towerIndex][ringIndex]);
                 ringChar = temp.charAt(temp.length() - 1); // take the last digit of the ringsize as the char to represent it
-                temp = repeatString(" ", (towerArray[0].length + 1) - towerArray[towerIndex][ringIndex]) + repeatString("" + ringChar, towerArray[towerIndex][ringIndex]); // create half the ring
+                temp = repeatString(" ", (towerArray[0].length + 1) - towerArray[towerIndex][ringIndex])
+                        + repeatString("" + ringChar, towerArray[towerIndex][ringIndex]); // create half the ring
                 display += temp + "@" + reverseString(temp); // add both halfs of the ring with a pole in the middle
                 if (towerArray.length - 1 != towerIndex) {
                     display += " | "; // add a seperating line if this isn't the last tower
@@ -81,7 +82,7 @@ public class TowerOfHanoi {
         return result;
     }
 
-    // repeats any given sting any given amount of times
+    // repeats any given string any given amount of times
     public static String repeatString(String str, long n) {
         String result = "";
         for (long i = 0; i < n; i++) { // repeat n times
@@ -90,7 +91,7 @@ public class TowerOfHanoi {
         return result;
     }
 
-    // returns a positive mod operation result for any given to values
+    // returns a positive mod operation result for any given two values
     public static int posMod(int a, int b) {
         int result = a % b; // calculate the mod result of a and b
         if (result < 0) {
@@ -109,17 +110,17 @@ public class TowerOfHanoi {
         return -1; // returns -1 if nothing was found
     }
 
-    // moves the first ring from a given tower to another given tower and returns if ti was successful
+    // moves the first ring from a given tower to another given tower and returns if it was successful
     public static boolean moveDisk(long[] fromArr, long[] toArr) {
         int fromFirst = findFirst(fromArr);
         // returns false if the from-array is empty
         if (fromFirst == -1) {
-            return false; // reports thar it was unsuccessful (due to the from-array not having a ring)
+            return false; // reports false if it was unsuccessful (due to the from-array not having any rings)
         }
         int toFirst = findFirst(toArr);
         boolean valid = false;
         // Checks if the move is valid
-        if (toFirst == -1) {
+        if (toFirst == -1) { // if receiving array is empty
             toFirst = toArr.length; // chooses the last position in the receiving array
             valid = true; // set the validity to true because there is no ring on the receiving side
         } else {
@@ -128,10 +129,10 @@ public class TowerOfHanoi {
         toFirst -= 1; // Reduces the target position by 1, so nothing gets overwritten
         if (valid) {
             toArr[toFirst] = fromArr[fromFirst]; // Creates a ring with the size of the first ring on the from-array
-            fromArr[fromFirst] = 0; // deletes the first ring from the from-array because it got transferred to the other ring
-            return true; // reports thar it was successful
+            fromArr[fromFirst] = 0; // deletes the first ring from the from-array because it got transferred to the other tower
+            return true; // reports true if it was successful
         }
-        return false; // reports thar it was unsuccessful
+        return false; // reports false if it was unsuccessful
     }
 
     // return the sum of all values in a given array with the type long
