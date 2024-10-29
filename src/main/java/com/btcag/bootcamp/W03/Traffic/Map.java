@@ -33,7 +33,7 @@ public class Map {
         for (int i = 0; i < this.map.length(); i++) {
             if (this.map.charAt(i) == '╫') {
                 this.startY = i / this.width;
-                this.startX = i % this.width;
+                this.startX = i % this.width - this.startY;
                 i = this.map.length();
             }
         }
@@ -78,10 +78,5 @@ public class Map {
         if (o == null || getClass() != o.getClass()) return false;
         Map map1 = (Map) o;
         return height == map1.height && width == map1.width && Objects.equals(map, map1.map);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(height, width, map);
     }
 }
