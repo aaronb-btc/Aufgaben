@@ -27,6 +27,7 @@ public class Car {
             if (this.speed < 100) this.speed += 20;
             if (this.speed > 100) this.speed = 100;
         } else if (lastChar != myChar) {
+            this.speed /= 2;
             switch (myChar) {
                 case('┘'):
                     this.direction = (int) ((int) 2 / (posMod(this.direction + 2, 4) + 1)) - 1;
