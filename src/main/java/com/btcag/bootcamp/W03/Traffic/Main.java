@@ -17,14 +17,29 @@ public class Main {
         Car car2 = new Car(map.getStartX(), map.getStartY(), map, 3);
         System.out.println(getMapWithCars(map, car1, car2));
         Scanner scanner = new Scanner(System.in);
+        String currentState;
+        int lastCar1X = -1;
+        int lastCar1Y = -1;
+        int lastCar2X = -1;
+        int lastCar2Y = -1;
         while (true) {
             System.out.println("\nPress Enter to simulate the next step");
             scanner.nextLine();
             car1.moveForward();
-            System.out.println(car1);
             car2.moveForward();
-            System.out.println(car2);
-            System.out.println(getMapWithCars(map, car1, car2));
+            currentState = getMapWithCars(map, car1, car2);
+            System.out.println(currentState);
+            if (
+                    currentState.contains("X") ||
+                    car2.getX() == lastCar1X &&
+                    car2.getY() == lastCar1Y &&
+                    car1.getX() == lastCar2X &&
+                    car1.getY() == lastCar2Y
+            ) System.out.println("Crash detected.");
+            lastCar1X = car1.getX();
+            lastCar1Y = car1.getY();
+            lastCar2X = car2.getX();
+            lastCar2Y = car2.getY();
         }
     }
 
