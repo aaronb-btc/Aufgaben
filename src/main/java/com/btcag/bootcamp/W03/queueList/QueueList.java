@@ -2,7 +2,7 @@ package com.btcag.bootcamp.W03.queueList;
 
 import java.util.Arrays;
 
-public class QueueList {
+public class QueueList implements IQueueList{
     private int elementsInList = 0;
     private int[] myArray = new int[1];
 
@@ -20,15 +20,18 @@ public class QueueList {
         return copiedArr;
     }
 
-    void pushBack(int element) {
+    @Override
+    public int pushLast(int element) {
         this.elementsInList += 1;
         if (this.elementsInList > this.myArray.length) {
             this.myArray = this.extendArray(this.myArray);
         }
         this.myArray[this.elementsInList - 1] = element;
+        return element;
     }
 
-    void pushFront(int element) {
+    @Override
+    public int pushFront(int element) {
         this.elementsInList += 1;
         if (this.elementsInList > this.myArray.length) {
             this.myArray = this.extendArray(this.myArray);
@@ -37,16 +40,25 @@ public class QueueList {
             this.myArray[i] = this.myArray[i - 1];
         }
         this.myArray[0] = element;
+        return element;
     }
 
-    int popBack() {
+    @Override
+    public int popLast() {
+        if (this.elementsInList < 1) {
+            return -1;
+        }
         this.elementsInList -= 1;
         int value = this.myArray[this.elementsInList];
         this.myArray[this.elementsInList] = 0;
         return value;
     }
 
-    int popFront() {
+    @Override
+    public int popFront() {
+        if (this.elementsInList < 1) {
+            return -1;
+        }
         this.elementsInList -= 1;
         int value = this.myArray[0];
         for (int i=0; i < this.myArray.length - 1; i++) {
@@ -56,19 +68,21 @@ public class QueueList {
         return value;
     }
 
-    int getIndex(int index) {
-        if (index > this.elementsInList) {
-            return this.myArray[index];
+    @Override
+    public int get(int index) {
+        if (index >= this.elementsInList || index > 0) {
+            return -1;
         }
-        System.err.println("ERR: Index not in list");
-        return 0;
+        return this.myArray[index];
     }
 
     @Override
     public String toString() {
-        String s = "QueueList{" +
-                "myArray=" + Arrays.toString(myArray) +
-                '}';
-        return s;
+        String list = "[";
+        for (int i=0; i < this.elementsInList; i++) {
+            list += this.myArray[i] + ", ";
+        }
+        list += this.myArray[this.elementsInList] + "]";
+        return list;
     }
 }

@@ -8,13 +8,13 @@ public class Main {
         }
         System.out.println(list);
         for (int i = 1; i < 10; i++) {
-            list.pushBack(i);
+            list.pushLast(i);
         }
         System.out.println(list);
         int value = list.popFront();
         System.out.println("popped value: " + value);
         System.out.println(list);
-        value = list.popBack();
+        value = list.popLast();
         System.out.println("popped value: " + value);
         System.out.println(list);
     }

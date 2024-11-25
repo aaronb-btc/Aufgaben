@@ -1,8 +1,6 @@
 package com.btcag.bootcamp.W03.performantQueueList;
 
-import java.util.Arrays;
-
-public class PerformantQueueList {
+public class PerformantQueueList implements IQueueList{
     private int startIndex = 0;
     private int endIndex = 1;
     private int[] myArray = new int[1];
@@ -21,7 +19,8 @@ public class PerformantQueueList {
         return result;
     }
 
-    void pushFront(int value) {
+    @Override
+    public int pushFront(int value) {
         int elements = posMod(this.endIndex - this.startIndex, this.myArray.length);
         if (this.myArray.length - elements < 2) {
             this.myArray = extendList(this.myArray);
@@ -34,9 +33,11 @@ public class PerformantQueueList {
         }
         this.startIndex = posMod(this.startIndex - 1, this.myArray.length);
         this.myArray[startIndex] = value;
+        return value;
     }
 
-    void pushBack(int value) {
+    @Override
+    public int pushLast(int value) {
         int elements = posMod(this.endIndex - this.startIndex, this.myArray.length);
         if (this.myArray.length - elements < 2) {
             this.myArray = extendList(this.myArray);
@@ -49,27 +50,38 @@ public class PerformantQueueList {
         }
         this.endIndex = posMod(this.endIndex + 1, this.myArray.length);
         this.myArray[endIndex] = value;
+        return value;
     }
 
-    int popFront() {
+    @Override
+    public int popFront() {
         int value = this.myArray[this.startIndex];
-        this.startIndex = posMod(this.startIndex + 1, this.myArray.length);
-        return value;
-    }
-
-    int popBack() {
-        int value = this.myArray[this.endIndex];
-        this.endIndex = posMod(this.endIndex - 1, this.myArray.length);
-        return value;
-    }
-
-    int getIndex(int index) {
-        index = posMod(this.startIndex + index, this.myArray.length);
-        if (index > posMod(this.endIndex - this.startIndex, this.myArray.length)) {
-            return this.myArray[index];
+        int newIndex = posMod(this.startIndex + 1, this.myArray.length);
+        if (newIndex == this.endIndex) {
+            return -1;
         }
-        System.err.println("ERR: Index not in list");
-        return 0;
+        this.startIndex = newIndex;
+        return value;
+    }
+
+    @Override
+    public int popLast() {
+        int value = this.myArray[this.endIndex];
+        int newIndex = posMod(this.endIndex - 1, this.myArray.length);
+        if (newIndex == this.startIndex) {
+            return -1;
+        }
+        this.endIndex = newIndex;
+        return value;
+    }
+
+    @Override
+    public int get(int index) {
+        index = posMod(this.startIndex + index, this.myArray.length);
+        if (index >= posMod(this.endIndex - this.startIndex, this.myArray.length) || index < 0) {
+            return -1;
+        }
+        return this.myArray[index];
     }
 
     @Override

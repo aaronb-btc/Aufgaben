@@ -30,12 +30,14 @@ public class Main {
             currentState = getMapWithCars(map, car1, car2);
             System.out.println(currentState);
             if (
-                    currentState.contains("X") ||
-                    car2.getX() == lastCar1X &&
-                    car2.getY() == lastCar1Y &&
-                    car1.getX() == lastCar2X &&
-                    car1.getY() == lastCar2Y
-            ) System.out.println("Crash detected.");
+                currentState.contains("X") ||
+                car2.getX() == lastCar1X &&
+                car2.getY() == lastCar1Y &&
+                car1.getX() == lastCar2X &&
+                car1.getY() == lastCar2Y
+            ) {
+                System.out.println("Crash detected.");
+            }
             lastCar1X = car1.getX();
             lastCar1Y = car1.getY();
             lastCar2X = car2.getX();
